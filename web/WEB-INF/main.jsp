@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="Keywords" content="粒子特效" />
     <title>张扬的JavaWeb主页</title>
-    <link rel="shortcut icon" href=".././img/icon.png" type="image/x-icon" />
-    <link href=".././css/main.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon" />
+    <link href="./css/main.css" rel="stylesheet" />
 </head>
 <body>
 <div id="background">
