@@ -1,0 +1,75 @@
+/* 背景 */
+body {
+    background-color: #000000;
+}
+
+#canvas {
+    display: block;
+    position: fixed;
+    top: 0;
+    z-index: -1;
+    background: url(".././img/back.webp");
+    background-size: cover;
+    opacity: 0.5;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+}
+
+.top_left {
+    width: 1000px;
+    color: aliceblue;
+}
+
+.news_switch {
+    list-style: none;
+    font-size: 18px;
+}
+
+.news_switch li{
+    display: inline-block;
+
+}
+.top_right {
+    width: calc(100% - 1000px);
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+    font-size: 16px;
+    color: aliceblue;
+}
+
+.top_right a{
+    text-decoration: none;
+    color: rgb(133, 135, 137);
+}
+.top_right a:hover{
+    color: white;
+}
+
+.body {
+    display: flex;
+    flex-direction: column;
+    /* height: 480px; */
+}
+
+.Chart {
+    height: 250px;
+    width: 950px;
+    background-color: aliceblue;
+}
+
+.news {
+    height: 380px;
+    width: 950px;
+    background-color: antiquewhite;
+
+}
