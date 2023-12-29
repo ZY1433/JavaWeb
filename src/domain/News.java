@@ -11,6 +11,11 @@ public class News {
 
     }
 
+    public News(String content,Date publishTime) {
+        this.content = content;
+        this.publishTime = publishTime;
+    }
+
     public int getNewsId() {
         return newsId;
     }
@@ -33,6 +38,10 @@ public class News {
 
     public void setPublishTime(Date publishTime) {
         this.publishTime = publishTime;
+    }
+
+    public  String toString() {
+        return newsId+","+content+","+publishTime;
     }
 
 

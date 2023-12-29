@@ -1,6 +1,7 @@
 package persistence;
 
 import domain.User;
+import service.NewsService;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -83,6 +84,11 @@ public class DBUtil {
 //        userDao.insertUser(new User("asd","123",false));
 //        List<User> user = userDao.getAllUsers();
 //        System.out.println(user);
+
+//        NewsDaoImpl newsDao = new NewsDaoImpl();
+//        System.out.println(newsDao.getAllNews());
+//        NewsService t = new NewsService();
+//        System.out.println(t.getAllNews());
 //    }
 
 }

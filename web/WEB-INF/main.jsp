@@ -5,7 +5,7 @@
   Time: 11:25
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
@@ -61,6 +61,11 @@
 
         <div class="news">
             新闻
+            <ul>
+                <c:forEach items="${sessionScope.newsList}" var="news">
+                    <li>${news.content}</li>
+                </c:forEach>
+            </ul>
         </div>
     </div>
 </div>
