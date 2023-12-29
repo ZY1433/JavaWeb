@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -28,7 +29,9 @@
             <input type="password" required name="pwd" id="pwd">
             <label for="pwd">密码</label>
         </div>
-        <p class = "msg">msg</p>
+        <c:if test="${requestScope.loginMsg != null}" >
+            <p class = "msg">${requestScope.loginMsg}</p>
+        </c:if>
         <button class="btn" type="submit">登录
             <span></span>
             <span></span>
