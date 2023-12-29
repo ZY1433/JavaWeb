@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -36,11 +37,20 @@
             </ol>
         </div>
         <div class="top_right">
-            <div class="login_register">
-                <a class="login" href="#">登录</a>
-                <span>|</span>
-                <a class="register" href="#">注册</a>
-            </div>
+            <c:if test="${sessionScope.loginUser==null}" >
+                <div class="login_register">
+                    <a class="login" href="/loginForm">登录</a>
+                    <span>|</span>
+                    <a class="register" href="/registerForm">注册</a>
+                </div>
+            </c:if>
+            <c:if test="${sessionScope.loginUser!=null}" >
+                <div class="login_register">
+                    <a class="login">你好${sessionScope.loginUser.username}</a>
+                    <span>|</span>
+                    <a class="login" href="/loginForm">点击这里切换登录</a>
+                </div>
+            </c:if>
         </div>
 
     </div>

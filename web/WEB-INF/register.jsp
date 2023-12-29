@@ -28,14 +28,16 @@
       <input type="password" required name="pwd" id="pwd">
       <label for="pwd">请输入密码</label>
     </div>
-    <p class = "msg">msg</p>
+    <c:if test="${requestScope.registerMsg != null}" >
+      <p class = "msg">${requestScope.registerMsg}</p>
+    </c:if>
     <button class="btn" type="submit">提交
       <span></span>
       <span></span>
       <span></span>
       <span></span>
     </button>
-    <a class="register" href="login.jsp">已有账号？请登录</a>
+    <a class="register" href="/loginForm">已有账号？请登录</a>
   </form>
 </div>
 </body>

@@ -22,11 +22,11 @@
     <h2>欢迎登录</h2>
     <form action="login" method="post">
         <div class="item">
-            <input type="text" required name="user" id="user">
+            <input type="text" required name="username" id="user">
             <label for="user">用户名</label>
         </div>
         <div class="item">
-            <input type="password" required name="pwd" id="pwd">
+            <input type="password" required name="password" id="pwd">
             <label for="pwd">密码</label>
         </div>
         <c:if test="${requestScope.loginMsg != null}" >
@@ -38,7 +38,7 @@
             <span></span>
             <span></span>
         </button>
-        <a class="register" href="register.jsp">没有账号？请注册</a>
+        <a class="register" href="/registerForm">没有账号？请注册</a>
     </form>
 </div>
 </body>
