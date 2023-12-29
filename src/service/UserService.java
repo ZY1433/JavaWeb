@@ -20,6 +20,17 @@ public class UserService {
         return userLogin;
     }
 
+    public boolean userRegister(String username, String password) {
+        boolean result = false;
+        User oldUser = userDao.getUserByUsername(username);
+        if (oldUser == null) {
+            User newUser = new User(username,password,false);
+            result = userDao.insertUser(newUser);
+        } else {
+            this.msg = "用户名已存在，请更换";
+        }
+        return result;
+    }
     public String getMsg() {
         return msg;
     }

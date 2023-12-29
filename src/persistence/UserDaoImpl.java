@@ -17,8 +17,11 @@ public class UserDaoImpl implements UserDao{
             "UPDATE users SET username=?,password =?,isadmin=? WHERE userID=?;";
     private static final String DELETE_USER =
             "DELETE FROM users WHERE userID=?;";
-    private static final String FIND_USER =
+    private static final String FIND_USER_BY_ID =
             "SELECT * FROM users WHERE userID=?;";
+
+    private static final String FIND_USER_BY_USERNAME =
+            "SELECT * FROM users WHERE userName=?;";
     private static final String FIND_ALL_USER =
             "SELECT * FROM users;";
     @Override
@@ -109,8 +112,28 @@ public class UserDaoImpl implements UserDao{
         User result = null;
         try {
             Connection connection = DBUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER);
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_ID);
             preparedStatement.setInt(1,userId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                result = this.resultsetToUser(resultSet);
+            }
+            DBUtil.closeResultSet(resultSet);
+            DBUtil.closePreparedStatement(preparedStatement);
+            DBUtil.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public User getUserByUsername(String userName) {
+        User result = null;
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_USERNAME);
+            preparedStatement.setString(1,userName);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()){
                 result = this.resultsetToUser(resultSet);

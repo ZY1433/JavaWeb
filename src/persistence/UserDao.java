@@ -20,6 +20,8 @@ public interface UserDao {
     public User getUserById(int userId);
     // 根据用户ID获取用户
 
+    public User getUserByUsername(String userName);
+    // 根据用户名获取用户
     public List<User> getAllUsers();
     // 获取所有用户
 

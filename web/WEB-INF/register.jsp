@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -21,15 +22,18 @@
   <h2>请注册</h2>
   <form action="register" method="post">
     <div class="item">
-      <input type="text" required name="user" id="user">
+      <input type="text" required name="username" id="user">
       <label for="user">请输入用户名</label>
     </div>
     <div class="item">
-      <input type="password" required name="pwd" id="pwd">
+      <input type="password" required name="password" id="pwd">
       <label for="pwd">请输入密码</label>
     </div>
     <c:if test="${requestScope.registerMsg != null}" >
       <p class = "msg">${requestScope.registerMsg}</p>
+    </c:if>
+    <c:if test="${requestScope.registerSuccessMsg != null}" >
+      <p class = "successMsg">${requestScope.registerSuccessMsg}</p>
     </c:if>
     <button class="btn" type="submit">提交
       <span></span>

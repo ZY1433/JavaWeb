@@ -177,3 +177,7 @@ h2 {
     color: red;
     text-align: center;
 }
+.successMsg {
+    color: #FFD700;
+    text-align: center;
+}
