@@ -34,6 +34,16 @@ body {
     padding: 40px;
     box-sizing: border-box;
 }
+.registerBox {
+    width: 400px;
+    height: 550px;
+    background-color: #0c1622;
+    margin: 100px auto;
+    border-radius: 10px;
+    box-shadow: 0 15px 25px 0 rgba(0, 0, 0, .6);
+    padding: 40px;
+    box-sizing: border-box;
+}
 
 h2 {
     text-align: center;
@@ -180,4 +190,7 @@ h2 {
 .successMsg {
     color: #FFD700;
     text-align: center;
+}
+.error {
+    color: red;
 }

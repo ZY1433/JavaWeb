@@ -22,6 +22,8 @@ public class UserDaoImpl implements UserDao{
 
     private static final String FIND_USER_BY_USERNAME =
             "SELECT * FROM users WHERE userName=?;";
+    private static final String FIND_USER_BY_EMAIL =
+            "SELECT * FROM users WHERE Email=?;";
     private static final String FIND_ALL_USER =
             "SELECT * FROM users;";
     @Override
@@ -136,6 +138,26 @@ public class UserDaoImpl implements UserDao{
             Connection connection = DBUtil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_USERNAME);
             preparedStatement.setString(1,userName);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()){
+                result = this.resultsetToUser(resultSet);
+            }
+            DBUtil.closeResultSet(resultSet);
+            DBUtil.closePreparedStatement(preparedStatement);
+            DBUtil.closeConnection(connection);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    @Override
+    public User getUserByEmail(String email) {
+        User result = null;
+        try {
+            Connection connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(FIND_USER_BY_EMAIL);
+            preparedStatement.setString(1,email);
             ResultSet resultSet = preparedStatement.executeQuery();
             if (resultSet.next()){
                 result = this.resultsetToUser(resultSet);
