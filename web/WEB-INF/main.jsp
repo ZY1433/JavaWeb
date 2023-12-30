@@ -87,7 +87,7 @@
                             <a href="#">
                                 <span class="newsDate">${news.publishTime}</span>
                                 <span class="newsFlag">新闻</span>
-                                <h1 class="newsContent">${news.content}</h1>
+                                <h1 class="newsContent">${news.title}</h1>
                             </a>
                         </li>
                     </c:forEach>

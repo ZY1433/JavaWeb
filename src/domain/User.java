@@ -3,6 +3,7 @@ package domain;
 public class User {
     private int userId;
     private String username;
+    private String email;
     private String password;
     private boolean isAdmin;
 
@@ -10,7 +11,12 @@ public class User {
     public User() {
     }
 
-    // 带参数的构造函数，用于创建对象时设置属性值
+    public User(String username, String email, String password) {
+        this.username = username;
+        this.email = email;
+        this.password = password;
+    }
+
     public User(String username, String password, boolean isAdmin) {
         this.username = username;
         this.password = password;
@@ -29,6 +35,15 @@ public class User {
     }
 
     // Getter 和 Setter 方法
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
     public int getUserId() {
         return userId;
     }

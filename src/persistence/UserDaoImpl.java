@@ -12,9 +12,9 @@ public class UserDaoImpl implements UserDao{
     private static final String GET_USER_BY_USER_AND_PASSWORD =
             "SELECT * FROM users WHERE userName=? AND Password=?;";
     private static final String INSERT_USER =
-            "INSERT INTO users (Username,Password,IsAdmin)values(?,?,?)";
+            "INSERT INTO users (Username,Email,Password,IsAdmin)values(?,?,?,?)";
     private static final String UPDATE_USER =
-            "UPDATE users SET username=?,password =?,isadmin=? WHERE userID=?;";
+            "UPDATE users SET username=?,email=?,password =?,isadmin=? WHERE userID=?;";
     private static final String DELETE_USER =
             "DELETE FROM users WHERE userID=?;";
     private static final String FIND_USER_BY_ID =
@@ -52,8 +52,9 @@ public class UserDaoImpl implements UserDao{
             Connection connection = DBUtil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(INSERT_USER);
             preparedStatement.setString(1,user.getUsername());
-            preparedStatement.setString(2,user.getPassword());
-            preparedStatement.setInt(3,user.isAdmin()?1:0);
+            preparedStatement.setString(2,user.getEmail());
+            preparedStatement.setString(3,user.getPassword());
+            preparedStatement.setInt(4,user.isAdmin()?1:0);
             int rows = preparedStatement.executeUpdate();
             if (rows == 1) {
                 result = true;
@@ -73,9 +74,10 @@ public class UserDaoImpl implements UserDao{
             Connection connection = DBUtil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_USER);
             preparedStatement.setString(1,user.getUsername());
-            preparedStatement.setString(2,user.getPassword());
-            preparedStatement.setInt(3,user.isAdmin()?1:0);
-            preparedStatement.setInt(4,user.getUserId());
+            preparedStatement.setString(2,user.getEmail());
+            preparedStatement.setString(3,user.getPassword());
+            preparedStatement.setInt(4,user.isAdmin()?1:0);
+            preparedStatement.setInt(5,user.getUserId());
             int rows = preparedStatement.executeUpdate();
             if (rows == 1) {
                 result = true;
@@ -170,6 +172,7 @@ public class UserDaoImpl implements UserDao{
         User user = new User();
         user.setUserId(resultSet.getInt("userID"));
         user.setUsername(resultSet.getString("Username"));
+        user.setEmail(resultSet.getString("Email"));
         user.setPassword(resultSet.getString("Password"));
         user.setAdmin(resultSet.getInt("Password") == 1);
 

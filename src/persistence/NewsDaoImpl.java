@@ -35,6 +35,7 @@ public class NewsDaoImpl implements NewsDao{
     private News resultsetToNews(ResultSet resultSet) throws SQLException {
         News news = new News();
         news.setNewsId(resultSet.getInt("NewsID"));
+        news.setTitle(resultSet.getString("Title"));
         news.setContent(resultSet.getString("Content"));
         news.setPublishTime(resultSet.getDate("PublishTime"));
 

@@ -3,6 +3,7 @@ package domain;
 import java.util.Date;
 public class News {
     private int newsId;
+    private String title;
     private String content;
     private Date publishTime;
 
@@ -14,6 +15,11 @@ public class News {
     public News(String content,Date publishTime) {
         this.content = content;
         this.publishTime = publishTime;
+    }
+
+    public News(String title, String content) {
+        this.title = title;
+        this.content = content;
     }
 
     public int getNewsId() {
@@ -38,6 +44,14 @@ public class News {
 
     public void setPublishTime(Date publishTime) {
         this.publishTime = publishTime;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     public  String toString() {
