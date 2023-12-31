@@ -52,7 +52,8 @@ public class DBUtil {
                 e.printStackTrace();
             }
         }
-    }public static void closeResultSet(ResultSet resultSet) {
+    }
+    public static void closeResultSet(ResultSet resultSet) {
         if (resultSet != null) {
             try {
                 resultSet.close();
@@ -61,7 +62,6 @@ public class DBUtil {
             }
         }
     }
-
     // 执行查询操作
     public static ResultSet executeQuery(String sql, Object... params) throws SQLException {
         Connection connection = getConnection();

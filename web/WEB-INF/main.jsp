@@ -28,13 +28,15 @@
             <canvas id="slogan"></canvas>
             <ol class="news_switch">
 <%--                <span>·</span>--%>
-<%--                <li><a>公告</a></li>--%>
-<%--                <span>·</span>--%>
-<%--                <li><a>活动</a></li>--%>
-<%--                <span>·</span>--%>
+                <li><a href="main">主页</a></li>
+                <span>·</span>
+                <li>欢迎游玩明日方舟</li>
+                <span>·</span>
+                <li><a href="newsPage">新闻</a></li>
+
 <%--                <li><a>新闻</a></li>--%>
 <%--                <span>·</span>--%>
-                <li>欢迎游玩明日方舟</li>
+
             </ol>
         </div>
         <div class="top_right">
@@ -80,7 +82,6 @@
                 </div>
             </div>
             <div class="news">
-                新闻
                 <ul>
                     <c:forEach items="${sessionScope.newsList}" var="news">
                         <li class="newsList">
@@ -102,23 +103,16 @@
 <div class="footer-wrapper">
     <ul class="footer-links">
         <li class="footer-links-item">个人信息保护政策 </li>
-        <li class="footer-links-item">儿童个人信息保护政策 </li>
         <li class="footer-links-item">使用许可及服务协议</li>
-        <li class="footer-links-item">应用权限</li>
-        <li class="footer-links-item">家长监护</li>
         <li class="footer-links-item">联系我们</li>
     </ul>
     <div class="footer-slot"></div>
     <ul class="footer-qualifications">
-        <li class="footer-qualifications-item">沪ICP备17022476号-1</li>
-        <li class="footer-qualifications-item">沪网文〔2018〕0803-067号</li>
-        <li class="footer-qualifications-item">ISBN 978-7-498-05646-7</li>
-        <li class="footer-qualifications-item"> 国新出审〔2019〕49号 </li>
+        <li class="footer-qualifications-item">豫ICP备05002484号-1</li>
     </ul>
     <div class="footer-copyright">
-        <span>Copyright ©2017 - 2023 上海鹰角网络科技有限公司</span>
-        <span>上海市嘉定区南翔镇银翔路799号昌辉大厦504-1室</span>
-        <span>电话：021-64399377</span>
+        <span>Copyright ©1902 - 2023 河南农业大学信管学院 &nbsp;</span>
+        <span>中国·河南· 郑州市郑东新区平安大道218号</span>
     </div>
 </div>
 </body>
