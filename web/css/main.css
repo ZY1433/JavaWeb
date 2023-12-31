@@ -86,6 +86,7 @@ a {
 }
 .body_right {
     position: relative;
+    padding-top: 100px;
 }
 #Logo {
     z-index: 0;
@@ -244,3 +245,47 @@ a {
     /*width: 600px;*/
 }
 
+.footer-wrapper {
+    background-color: rgba(20, 21, 22,0.8);
+    color: white;
+    margin: 0;
+    margin-top: 100px;
+}
+.footer-links {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-image: linear-gradient(to right, #464646 0%, #464646 60%, rgba(70, 70, 70, 0) 100%) 30 stretch;
+    border-top-width: 0;
+    border-left-width: 0;
+    border-right-width: 0;
+
+}
+.footer-links-item {
+    margin-left: 20px;
+}
+.footer-slot {
+    width: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.footer-qualifications {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 20px;
+}
+.footer-qualifications-item {
+    width: 320px;
+    display: flex;
+    justify-content: center;
+}
+.footer-copyright {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
