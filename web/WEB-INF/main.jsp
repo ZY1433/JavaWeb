@@ -13,7 +13,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="Keywords" content="粒子特效" />
     <title>张扬的JavaWeb主页</title>
     <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon" />
     <link href="./css/main.css" rel="stylesheet" />
@@ -28,13 +27,14 @@
         <div class="top_left">
             <canvas id="slogan"></canvas>
             <ol class="news_switch">
-                <span>·</span>
-                <li><a href="#">公告</a></li>
-                <span>·</span>
-                <li><a href="#">活动</a></li>
-                <span>·</span>
-                <li><a href="#">新闻</a></li>
-                <span>·</span>
+<%--                <span>·</span>--%>
+<%--                <li><a>公告</a></li>--%>
+<%--                <span>·</span>--%>
+<%--                <li><a>活动</a></li>--%>
+<%--                <span>·</span>--%>
+<%--                <li><a>新闻</a></li>--%>
+<%--                <span>·</span>--%>
+                <li>欢迎游玩明日方舟</li>
             </ol>
         </div>
         <div class="top_right">
@@ -84,7 +84,7 @@
                 <ul>
                     <c:forEach items="${sessionScope.newsList}" var="news">
                         <li class="newsList">
-                            <a href="#">
+                            <a href="newsPage">
                                 <span class="newsDate">${news.publishTime}</span>
                                 <span class="newsFlag">新闻</span>
                                 <h1 class="newsContent">${news.title}</h1>
@@ -120,7 +120,6 @@
         <span>上海市嘉定区南翔镇银翔路799号昌辉大厦504-1室</span>
         <span>电话：021-64399377</span>
     </div>
-
 </div>
 </body>
 <script type="text/javascript" src="./js/main.js"></script>
