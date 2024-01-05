@@ -53,6 +53,14 @@
         <url-pattern>/newsPage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>adminLoginFormServlet</servlet-name>
+        <servlet-class>web.Servlet.AdminLoginFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminLoginFormServlet</servlet-name>
+        <url-pattern>/admin</url-pattern>
+    </servlet-mapping>
 <!--        以下是处理请求的Servlet-->
     <servlet>
         <servlet-name>loginServlet</servlet-name>
@@ -61,6 +69,15 @@
     <servlet-mapping>
         <servlet-name>loginServlet</servlet-name>
         <url-pattern>/login</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>adminLoginServlet</servlet-name>
+        <servlet-class>web.Servlet.AdminLoginServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>adminLoginServlet</servlet-name>
+        <url-pattern>/adminLogin</url-pattern>
     </servlet-mapping>
 
     <servlet>

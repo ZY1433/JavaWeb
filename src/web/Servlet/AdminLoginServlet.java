@@ -10,39 +10,39 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-public class LoginServlet extends HttpServlet {
-    private String username;
+public class AdminLoginServlet extends HttpServlet {
+    private String adminname;
     private String password;
-    private String loginMsg;
+    private String adminloginMsg;
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        this.username = req.getParameter("username");
+        this.adminname = req.getParameter("adminname");
         this.password = req.getParameter("password");
 
         if (!validate()) {
-            req.setAttribute("loginMsg",loginMsg);
-            req.getRequestDispatcher("loginForm").forward(req,resp);
+            req.setAttribute("adminloginMsg",adminloginMsg);
+            req.getRequestDispatcher("admin").forward(req,resp);
         } else {
             UserService userService = new UserService();
-            User loginUser = userService.userLogin(this.username,this.password);
-            if (loginUser != null) {
+            User loginAdmin = userService.adminLogin(this.adminname,this.password);
+            if (loginAdmin != null) {
                 HttpSession session = req.getSession();
-                session.setAttribute("loginUser",loginUser);
+                session.setAttribute("loginAdmin",loginAdmin);
                 resp.sendRedirect("main");
             } else {
-                req.setAttribute("loginMsg",userService.getMsg());
-                req.getRequestDispatcher("loginForm").forward(req,resp);
+                req.setAttribute("adminloginMsg",userService.getMsg());
+                req.getRequestDispatcher("admin").forward(req,resp);
             }
         }
     }
 
     private boolean validate() {
-        if(this.username == null || this.username.equals("")) {
-            this.loginMsg = "用户名不能为空";
+        if(this.adminname == null || this.adminname.equals("")) {
+            this.adminloginMsg = "用户名不能为空";
             return false;
         } else if (this.password  == null || this.password.equals("")) {
-            this.loginMsg = "密码不能为空";
+            this.adminloginMsg = "密码不能为空";
             return false;
         }
         return true;

@@ -12,7 +12,7 @@ public class UserService {
         this.userDao = new UserDaoImpl();
     }
 
-    public User login(String username, String password) {
+    public User userLogin(String username, String password) {
         User userLogin = userDao.getUserByUsernameAndPassword(username,password);
         if (userLogin == null) {
             this.msg = "用户名或者密码错误";
@@ -20,6 +20,16 @@ public class UserService {
         return userLogin;
     }
 
+    public User adminLogin(String username, String password) {
+        User userLogin = userDao.getUserByUsernameAndPassword(username,password);
+        if (userLogin == null) {
+            this.msg = "用户名或者密码错误";
+        } else if (!userLogin.isAdmin()) {
+            this.msg = "该用户不是管理员";
+            return null;
+        }
+        return userLogin;
+    }
     public boolean userRegister(String username, String email,String password) {
         boolean result = false;
         User oldUser = userDao.getUserByUsername(username);

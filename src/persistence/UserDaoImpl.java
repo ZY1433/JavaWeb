@@ -196,7 +196,7 @@ public class UserDaoImpl implements UserDao{
         user.setUsername(resultSet.getString("Username"));
         user.setEmail(resultSet.getString("Email"));
         user.setPassword(resultSet.getString("Password"));
-        user.setAdmin(resultSet.getInt("Password") == 1);
+        user.setAdmin(resultSet.getInt("isAdmin") == 1);
 
         return user;
     }
