@@ -24,10 +24,21 @@
         }
 
         header {
-            background-color: #2c3e50;
+            background-color: #3498db;
             color: white;
             padding: 1rem;
             text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
         }
 
         main {
@@ -99,7 +110,9 @@
 <body>
 
 <header>
+    <a href="main">《回到用户主界面</a>
     <h1>用户管理系统</h1>
+    <a href="newsMangePage">前往新闻管理页面》</a>
 </header>
 
 <main>
@@ -197,7 +210,7 @@
     function del(){
         postelement[2].setAttribute("style", 'display:flex');
     }
-    // 点击“关闭”
+    // 关闭页面
     function closing() {
         for (let i = 0; i < postelement.length; i++) {
             postelement[i].setAttribute("style", 'display:none');

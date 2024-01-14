@@ -115,4 +115,13 @@
         <servlet-name>userMangeServlet</servlet-name>
         <url-pattern>/userMange</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>newsMangeServlet</servlet-name>
+        <servlet-class>web.Servlet.NewsMangeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newsMangeServlet</servlet-name>
+        <url-pattern>/newsMange</url-pattern>
+    </servlet-mapping>
 </web-app>

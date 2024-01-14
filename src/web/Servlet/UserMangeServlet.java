@@ -19,6 +19,7 @@ public class UserMangeServlet extends HttpServlet {
     private String adminMsg;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
         this.type = req.getParameter("type");
         if (type.equals("add")) {
             this.username = req.getParameter("username");

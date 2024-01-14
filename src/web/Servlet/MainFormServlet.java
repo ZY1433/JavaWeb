@@ -1,6 +1,6 @@
 package web.Servlet;
 
-import persistence.NewsDao;
+import domain.News;
 import service.NewsService;
 
 import javax.servlet.ServletException;
@@ -19,7 +19,7 @@ public class MainFormServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         NewsService newsService = new NewsService();
-        List newsList = newsService.getAllNews();
+        List<News> newsList = newsService.getAllNews();
         session.setAttribute("newsList",newsList);
         req.getRequestDispatcher(LOGIN_FORM).forward(req,resp);
     }

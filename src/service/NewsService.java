@@ -15,4 +15,10 @@ public class NewsService {
     public List<News> getAllNews() {
         return newsDao.getAllNews();
     }
+    public boolean insertNews(String title, String content) {
+        boolean result = false;
+        News news = new News(title,content);
+        result = newsDao.insertNews(news);
+        return result;
+    }
 }

@@ -13,6 +13,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html;charset=utf-8">
     <title>新闻管理页面</title>
     <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon" />
     <style>
@@ -24,10 +25,21 @@
         }
 
         header {
-            background-color: #2c3e50;
+            background-color: #3498db;
             color: white;
             padding: 1rem;
             text-align: center;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        a {
+            text-decoration: none;
+            color: white;
+            font-size: 32px;
+            font-weight: bold;
         }
 
         main {
@@ -69,49 +81,152 @@
         tr:hover {
             background-color: #f5f5f5;
         }
+        .content-cell {
+            max-width: 400px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .datetime-cell {
+            white-space: nowrap;
+        }
+        .post {
+            position: fixed;
+            background: #ffffff;
+            border: 1px #cccccc solid;
+            width: 600px;
+            left: calc((100vw - 600px) / 2);
+            top: 10vw;
+            padding: 10px;
+            font-size: 14px;
+            z-index: 999999;
+            display: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .post .title {
+            width: 450px;
+            height: 30px;
+            display: block;
+            border: 1px #cecece solid;
+            margin-bottom: 10px;
+        }
+        .post .message {
+            width: 450px;
+            height: 200px;
+            display: block;
+            border: 1px #cecece solid;
+            margin-bottom: 10px;
+        }
+
     </style>
 </head>
 <body>
 
 <header>
+    <a href="userMangePage">《回到用户管理页面</a>
     <h1>新闻管理系统</h1>
+    <a href="main">前往用户主界面》</a>
 </header>
 
 <main>
-    <button>添加用户</button>
-    <button>编辑用户</button>
-    <button>删除用户</button>
-    <button>查找用户</button>
-
+    <button onclick="add()">添加新闻</button>
+    <button >编辑新闻</button>
+    <button >删除新闻</button>
+    <button >查找新闻</button>
+    <c:if test="${requestScope.newsMsg != null}">
+        <p style="color: red">${requestScope.newsMsg}</p>
+    </c:if>
     <table>
         <thead>
         <tr>
-            <th>User ID</th>
-            <th>用户名</th>
-            <th>Email</th>
-            <th>Password</th>
-            <th>管理员</th>
+            <th>News ID</th>
+            <th>标题</th>
+            <th>内容</th>
+            <th>发布时间</th>
         </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>1</td>
-            <td>John Doe</td>
-            <td>john.doe@example.com</td>
-            <td>********</td>
-            <td>是</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Jane Doe</td>
-            <td>jane.doe@example.com</td>
-            <td>********</td>
-            <td>否</td>
-        </tr>
+        <c:forEach items="${sessionScope.newsList}" var="news">
+            <tr>
+                <td>${news.newsId}</td>
+                <td>${news.title}</td>
+                <td class="content-cell">${news.content}</td>
+                <td class="datetime-cell">${news.publishTime}</td>
+            </tr>
+        </c:forEach>
         </tbody>
     </table>
 </main>
-
+<div class="post">
+    <h2>添加新闻</h2>
+    <form method="post" action="newsMange">
+        <input class="title" placeholder="请输入插入的新闻标题" name="title" type="text" required>
+        <textarea class="message" placeholder="请输入插入的新闻内容" name="content" required></textarea>
+        <input style="display: none" value="add" name="type">
+        <div style="display: flex;flex-direction: row;justify-content: center">
+            <button type="submit">提交</button>
+            <button onclick="closing()" type="reset">关闭</button>
+        </div>
+    </form>
+</div>
+<%--<div class="post">--%>
+<%--    <h2>根据id编辑用户</h2>--%>
+<%--    <form method="post" action="userMange">--%>
+<%--        <input class="message" placeholder="请输入编辑的用户id" name="userId" type="number" required>--%>
+<%--        <input class="message" placeholder="请输入更新后的用户名" name="username" type="text" required>--%>
+<%--        <input class="message" placeholder="请输入更新后的用户邮箱" name="email" type="text" required>--%>
+<%--        <input class="message" placeholder="请输入更新后的用户密码" name="password" type="text" required>--%>
+<%--        <input style="display: none" value="edit" name="type">--%>
+<%--        <div style="display: flex;flex-direction: row;justify-content: center">--%>
+<%--            <label style="line-height: 2.5">是否为管理员:</label>--%>
+<%--            <input placeholder="是否为管理员" style="height: 30px;width: 30px" name="isAdmin" type="checkbox">--%>
+<%--        </div>--%>
+<%--        <div style="display: flex;flex-direction: row;justify-content: center">--%>
+<%--            <button type="submit">提交</button>--%>
+<%--            <button onclick="closing()" type="reset">关闭</button>--%>
+<%--        </div>--%>
+<%--    </form>--%>
+<%--</div>--%>
+<%--<div class="post">--%>
+<%--    <h2>根据id删除用户</h2>--%>
+<%--    <form method="post" action="userMange">--%>
+<%--        <input class="message" placeholder="请输入删除的用户id" name="userId" type="number" required>--%>
+<%--        <input style="display: none" value="delete" name="type">--%>
+<%--        <div style="display: flex;flex-direction: row;justify-content: center">--%>
+<%--            <button type="submit">提交</button>--%>
+<%--            <button onclick="closing()" type="reset">关闭</button>--%>
+<%--        </div>--%>
+<%--    </form>--%>
+<%--</div>--%>
 </body>
+<script>
+    const postelement = document.getElementsByClassName("post");
+    const title = document.getElementsByClassName("title")[0];
+    const content = document.getElementsByClassName("content")[0];
+
+    // 添加新闻
+    function add() {
+        postelement[0].setAttribute("style", 'display:flex');
+    }
+    // // 编辑新闻
+    // function edit() {
+    //     postelement[1].setAttribute("style", 'display:flex');
+    // }
+    // // 删除新闻
+    // function del(){
+    //     postelement[2].setAttribute("style", 'display:flex');
+    // }
+    // 关闭页面
+    function closing() {
+        for (let i = 0; i < postelement.length; i++) {
+            postelement[i].setAttribute("style", 'display:none');
+        }
+    }
+</script>
 </html>
 
