@@ -16,6 +16,24 @@
         <filter-name>NewsFilter</filter-name>
         <url-pattern>/newsPage</url-pattern>
     </filter-mapping>
+
+    <filter>
+        <filter-name>UserMangePageFilter</filter-name>
+        <filter-class>web.Filter.UserMangePageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>UserMangePageFilter</filter-name>
+        <url-pattern>/userMangePage</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>NewsMangePageFilter</filter-name>
+        <filter-class>web.Filter.NewsMangePageFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>NewsMangePageFilter</filter-name>
+        <url-pattern>/newsMangePage</url-pattern>
+    </filter-mapping>
 <!--    以下是页面直接访问页面的Servlet-->
     <servlet>
         <servlet-name>loginFormServlet</servlet-name>
