@@ -8,7 +8,7 @@ import java.util.List;
 
 public class NewsDaoImpl implements NewsDao{
     private static final String FIND_ALL_NEWS =
-            "SELECT * FROM news;";
+            "SELECT * FROM news ORDER BY newsID ASC;";
     private static final String INSERT_NEWS =
             "INSERT INTO news (Title,Content,PublishTime)values(?,?,now())";
     private static final String UPDATE_NEWS =

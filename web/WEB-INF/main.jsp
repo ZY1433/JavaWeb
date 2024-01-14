@@ -82,7 +82,6 @@
                 </div>
             </div>
             <div class="news">
-                <ul>
                     <c:forEach items="${sessionScope.newsList}" var="news">
                         <li class="newsList">
                             <a href="newsPage">
@@ -92,7 +91,7 @@
                             </a>
                         </li>
                     </c:forEach>
-                </ul>
+
             </div>
         </div>
         <div class="body_right">

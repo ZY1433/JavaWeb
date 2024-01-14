@@ -48,9 +48,7 @@ a {
     height: 70px;
 }
 
-.news {
-    margin-left: 60px;
-}
+
 .news_switch {
     list-style: none;
     font-size: 24px;
@@ -183,9 +181,12 @@ a {
 
 /*新闻*/
 .news {
-    height: 380px;
+    height: 460px;
     width: 950px;
-
+    margin-left: 60px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column-reverse;
 }
 .newsList{
     list-style: none;

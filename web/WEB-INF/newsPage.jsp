@@ -14,7 +14,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>新闻详情</title>
     <link rel="shortcut icon" href="./img/icon.png" type="image/x-icon" />
-    <link href="./css/main.css" rel="stylesheet" />
+    <link href="./css/newsPage.css" rel="stylesheet" />
 </head>
 <body>
 <div id="background">
@@ -48,21 +48,19 @@
         </c:if>
     </div>
 </div>
-<div class="newsPageContent" style="position: relative;margin: auto;">
+<div class="newsPageContent" >
     <h1 class="newsPageTitle">新闻详情中心</h1>
-    <div class="news" style="position: relative; top: 150px; left: 30%">
-
-        <ul>
-            <c:forEach items="${sessionScope.newsList}" var="news">
-                <li class="newsList">
-                    <a href="newsPage">
-                        <span class="newsDate">${news.publishTime}</span>
-                        <span class="newsFlag">新闻</span>
-                        <h1 class="newsContent">${news.content}</h1>
-                    </a>
-                </li>
-            </c:forEach>
-        </ul>
+    <div class="news">
+        <c:forEach items="${sessionScope.newsList}" var="news">
+            <li class="newsList">
+                <a >
+                    <span class="newsDate">${news.publishTime}</span>
+                    <span class="newsFlag">新闻</span>
+                    <h1 class="newsTitle">${news.title}</h1>
+                </a>
+                <p class="newsContent">${news.content}</p>
+            </li>
+        </c:forEach>
     </div>
 </div>
 
