@@ -64,6 +64,20 @@ public class UserMangeServlet extends HttpServlet {
                 req.getRequestDispatcher("userMangePage").forward(req,resp);
             }
 
+        } else if (type.equals("delete")) {
+            this.userId = req.getParameter("userId");
+
+
+                UserService userService = new UserService();
+                boolean flag = userService.adminDelete(this.userId);
+                if (flag) {
+                    req.setAttribute("adminMsg","删除成功！");
+                } else {
+                    req.setAttribute("adminMsg",userService.getMsg());
+                }
+                req.getRequestDispatcher("userMangePage").forward(req,resp);
+
+
         }
 
     }

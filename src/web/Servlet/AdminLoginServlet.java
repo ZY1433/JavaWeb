@@ -29,7 +29,7 @@ public class AdminLoginServlet extends HttpServlet {
             if (loginAdmin != null) {
                 HttpSession session = req.getSession();
                 session.setAttribute("loginAdmin",loginAdmin);
-                resp.sendRedirect("main");
+                resp.sendRedirect("userMangePage");
             } else {
                 req.setAttribute("adminloginMsg",userService.getMsg());
                 req.getRequestDispatcher("admin").forward(req,resp);

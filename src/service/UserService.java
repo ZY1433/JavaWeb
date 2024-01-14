@@ -62,15 +62,22 @@ public class UserService {
     }
     public boolean adminUpdate(String userId, String username, String email, String password, boolean isAdmin) {
         boolean result = false;
-        User oldUser = userDao.getUserByUsername(username);
-        User oldEmail = userDao.getUserByUsername(username);
-        if (oldUser != null) {
-            this.msg = "用户名已存在，请更换";
-        } else if (oldEmail != null){
-            this.msg = "邮箱已使用，请更换";
+        User oldUser = userDao.getUserById(Integer.parseInt(userId));
+        if (oldUser == null) {
+            this.msg = "该用户不存在，无法更新";
         } else {
             User newUser = new User(Integer.parseInt(userId),username,email,password,isAdmin);
             result = userDao.updateUser(newUser);
+        }
+        return result;
+    }
+    public boolean adminDelete(String userId) {
+        boolean result = false;
+        User oldUser = userDao.getUserById(Integer.parseInt(userId));
+        if (oldUser == null) {
+            this.msg = "用户不存在，无法删除";
+        } else {
+            result = userDao.deleteUser(oldUser);
         }
         return result;
     }

@@ -105,8 +105,8 @@
 <main>
     <button onclick="add()">添加用户</button>
     <button onclick="edit()">编辑用户</button>
-    <button>删除用户</button>
-    <button>查找用户</button>
+    <button onclick="del()">删除用户</button>
+    <button onclick="javascript:location.reload();">查找用户</button>
     <c:if test="${requestScope.adminMsg != null}">
         <p style="color: red">${requestScope.adminMsg}</p>
     </c:if>
@@ -168,19 +168,34 @@
         </div>
     </form>
 </div>
+<div class="post">
+    <h2>根据id删除用户</h2>
+    <form method="post" action="userMange">
+        <input class="message" placeholder="请输入删除的用户id" name="userId" type="number" required>
+        <input style="display: none" value="delete" name="type">
+        <div style="display: flex;flex-direction: row;justify-content: center">
+            <button type="submit">提交</button>
+            <button onclick="closing()" type="reset">关闭</button>
+        </div>
+    </form>
+</div>
 </body>
 <script>
     const postelement = document.getElementsByClassName("post");
     const title = document.getElementsByClassName("title")[0];
     const content = document.getElementsByClassName("content")[0];
 
-    // 点击“添加用户”
+    // 添加用户
     function add() {
         postelement[0].setAttribute("style", 'display:flex');
     }
-    // 点击“编辑用户”
+    // 编辑用户
     function edit() {
         postelement[1].setAttribute("style", 'display:flex');
+    }
+    // 删除用户
+    function del(){
+        postelement[2].setAttribute("style", 'display:flex');
     }
     // 点击“关闭”
     function closing() {
