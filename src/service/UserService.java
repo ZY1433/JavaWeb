@@ -60,6 +60,20 @@ public class UserService {
         }
         return result;
     }
+    public boolean adminUpdate(String userId, String username, String email, String password, boolean isAdmin) {
+        boolean result = false;
+        User oldUser = userDao.getUserByUsername(username);
+        User oldEmail = userDao.getUserByUsername(username);
+        if (oldUser != null) {
+            this.msg = "用户名已存在，请更换";
+        } else if (oldEmail != null){
+            this.msg = "邮箱已使用，请更换";
+        } else {
+            User newUser = new User(Integer.parseInt(userId),username,email,password,isAdmin);
+            result = userDao.updateUser(newUser);
+        }
+        return result;
+    }
     public List<User> getAllUsers() {
         return userDao.getAllUsers();
     }

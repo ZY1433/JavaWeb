@@ -9,13 +9,14 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 public class UserMangeServlet extends HttpServlet {
-    private String id;
+    private String userId;
     private String username;
     private String email;
     private String password;
     private boolean isAdmin;
     private String type;
 
+    private String adminMsg;
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         this.type = req.getParameter("type");
@@ -27,15 +28,53 @@ public class UserMangeServlet extends HttpServlet {
             if(admin != null) {
                 this.isAdmin = true;
             }
-            UserService userService = new UserService();
-            boolean flag = userService.adminRegister(this.username,this.email,this.password,this.isAdmin);
-            if (flag) {
-                req.setAttribute("adminMsg","添加成功！");
-            } else {
-                req.setAttribute("adminMsg",userService.getMsg());
+            if (!validate()){
+                req.setAttribute("adminMsg",adminMsg);
+                req.getRequestDispatcher("userMangePage").forward(req,resp);
             }
-            req.getRequestDispatcher("userMangePage").forward(req,resp);
+            else {
+                UserService userService = new UserService();
+                boolean flag = userService.adminRegister(this.username,this.email,this.password,this.isAdmin);
+                if (flag) {
+                    req.setAttribute("adminMsg","添加成功！");
+                } else {
+                    req.setAttribute("adminMsg",userService.getMsg());
+                }
+                req.getRequestDispatcher("userMangePage").forward(req,resp);
+            }
+        } else if (type.equals("edit")) {
+            this.userId = req.getParameter("userId");
+            this.username = req.getParameter("username");
+            this.email = req.getParameter("email");
+            this.password = req.getParameter("password");
+            String admin = req.getParameter("isAdmin");
+            if(admin != null) {
+                this.isAdmin = true;
+            } if (!validate()){
+                req.setAttribute("adminMsg",adminMsg);
+                req.getRequestDispatcher("userMangePage").forward(req,resp);
+            } else {
+                UserService userService = new UserService();
+                boolean flag = userService.adminUpdate(this.userId,this.username,this.email,this.password,this.isAdmin);
+                if (flag) {
+                    req.setAttribute("adminMsg","更新成功！");
+                } else {
+                    req.setAttribute("adminMsg",userService.getMsg());
+                }
+                req.getRequestDispatcher("userMangePage").forward(req,resp);
+            }
+
         }
 
+    }
+    private boolean validate() {
+        if(this.username == null || this.username.equals("")) {
+            this.adminMsg = "用户名不能为空";
+            return false;
+        } else if (this.password  == null || this.password.equals("")) {
+            this.adminMsg = "密码不能为空";
+            return false;
+        }
+        return true;
     }
 }

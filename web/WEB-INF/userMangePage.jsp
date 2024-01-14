@@ -104,10 +104,12 @@
 
 <main>
     <button onclick="add()">添加用户</button>
-    <button>编辑用户</button>
+    <button onclick="edit()">编辑用户</button>
     <button>删除用户</button>
     <button>查找用户</button>
-
+    <c:if test="${requestScope.adminMsg != null}">
+        <p style="color: red">${requestScope.adminMsg}</p>
+    </c:if>
     <table>
         <thead>
         <tr>
@@ -132,23 +134,39 @@
     </table>
 </main>
 <div class="post">
-    <h2 >添加用户</h2>
+    <h2>添加用户</h2>
     <form method="post" action="userMange">
-        <input class="message" placeholder="请输入插入的用户名" name="username" type="text">
-        <input class="message" placeholder="请输入插入的用户邮箱" name="email" type="text">
-        <input class="message" placeholder="请输入插入的用户密码" name="password" type="text">
+        <input class="message" placeholder="请输入插入的用户名" name="username" type="text" required>
+        <input class="message" placeholder="请输入插入的用户邮箱" name="email" type="text" required>
+        <input class="message" placeholder="请输入插入的用户密码" name="password" type="text" required>
         <input style="display: none" value="add" name="type">
         <div style="display: flex;flex-direction: row;justify-content: center">
             <label for="isAdmin" style="line-height: 2.5">是否为管理员:</label>
             <input placeholder="是否为管理员" style="height: 30px;width: 30px" name="isAdmin" id="isAdmin" type="checkbox">
         </div>
         <div style="display: flex;flex-direction: row;justify-content: center">
-            <button>提交</button>
-            <button onclick="closing()">关闭</button>
+            <button type="submit">提交</button>
+            <button onclick="closing()" type="reset">关闭</button>
         </div>
     </form>
-
-
+</div>
+<div class="post">
+    <h2>根据id编辑用户</h2>
+    <form method="post" action="userMange">
+        <input class="message" placeholder="请输入编辑的用户id" name="userId" type="number" required>
+        <input class="message" placeholder="请输入更新后的用户名" name="username" type="text" required>
+        <input class="message" placeholder="请输入更新后的用户邮箱" name="email" type="text" required>
+        <input class="message" placeholder="请输入更新后的用户密码" name="password" type="text" required>
+        <input style="display: none" value="edit" name="type">
+        <div style="display: flex;flex-direction: row;justify-content: center">
+            <label style="line-height: 2.5">是否为管理员:</label>
+            <input placeholder="是否为管理员" style="height: 30px;width: 30px" name="isAdmin" type="checkbox">
+        </div>
+        <div style="display: flex;flex-direction: row;justify-content: center">
+            <button type="submit">提交</button>
+            <button onclick="closing()" type="reset">关闭</button>
+        </div>
+    </form>
 </div>
 </body>
 <script>
@@ -156,9 +174,13 @@
     const title = document.getElementsByClassName("title")[0];
     const content = document.getElementsByClassName("content")[0];
 
-    // 点击“添加”
+    // 点击“添加用户”
     function add() {
         postelement[0].setAttribute("style", 'display:flex');
+    }
+    // 点击“编辑用户”
+    function edit() {
+        postelement[1].setAttribute("style", 'display:flex');
     }
     // 点击“关闭”
     function closing() {
