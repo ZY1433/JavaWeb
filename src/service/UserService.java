@@ -4,6 +4,8 @@ import domain.User;
 import persistence.UserDao;
 import persistence.UserDaoImpl;
 
+import java.util.List;
+
 public class UserService {
     private UserDao userDao;
     private  String msg;
@@ -43,6 +45,23 @@ public class UserService {
             result = userDao.insertUser(newUser);
         }
         return result;
+    }
+    public boolean adminRegister(String username, String email, String password, boolean isAdmin) {
+        boolean result = false;
+        User oldUser = userDao.getUserByUsername(username);
+        User oldEmail = userDao.getUserByUsername(username);
+        if (oldUser != null) {
+            this.msg = "用户名已存在，请更换";
+        } else if (oldEmail != null){
+            this.msg = "邮箱已使用，请更换";
+        } else {
+            User newUser = new User(username,email,password,isAdmin);
+            result = userDao.insertUser(newUser);
+        }
+        return result;
+    }
+    public List<User> getAllUsers() {
+        return userDao.getAllUsers();
     }
     public String getMsg() {
         return msg;

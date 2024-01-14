@@ -61,6 +61,24 @@
         <servlet-name>adminLoginFormServlet</servlet-name>
         <url-pattern>/admin</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>newsMangePageServlet</servlet-name>
+        <servlet-class>web.Servlet.NewsMangePageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>newsMangePageServlet</servlet-name>
+        <url-pattern>/newsMangePage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userMangePageServlet</servlet-name>
+        <servlet-class>web.Servlet.UserMangePageServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userMangePageServlet</servlet-name>
+        <url-pattern>/userMangePage</url-pattern>
+    </servlet-mapping>
 <!--        以下是处理请求的Servlet-->
     <servlet>
         <servlet-name>loginServlet</servlet-name>
@@ -87,5 +105,14 @@
     <servlet-mapping>
         <servlet-name>registerServlet</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>userMangeServlet</servlet-name>
+        <servlet-class>web.Servlet.UserMangeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>userMangeServlet</servlet-name>
+        <url-pattern>/userMange</url-pattern>
     </servlet-mapping>
 </web-app>
