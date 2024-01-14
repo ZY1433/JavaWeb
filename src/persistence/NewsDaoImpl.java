@@ -12,7 +12,7 @@ public class NewsDaoImpl implements NewsDao{
     private static final String INSERT_NEWS =
             "INSERT INTO news (Title,Content,PublishTime)values(?,?,now())";
     private static final String UPDATE_NEWS =
-            "UPDATE news SET Title=?,Content=? WHERE NewsID=?;";
+            "UPDATE news SET Title=?,Content=?,PublishTime=now() WHERE NewsID=?;";
     private static final String DELETE_NEWS =
             "DELETE FROM news WHERE NewsID=?;";
     private static final String FIND_NEWS_BY_ID =

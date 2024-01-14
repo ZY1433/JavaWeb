@@ -135,9 +135,9 @@
 
 <main>
     <button onclick="add()">添加新闻</button>
-    <button >编辑新闻</button>
-    <button >删除新闻</button>
-    <button >查找新闻</button>
+    <button onclick="edit()">编辑新闻</button>
+    <button onclick="del()">删除新闻</button>
+    <button onclick="javascript:location.reload();">查找新闻</button>
     <c:if test="${requestScope.newsMsg != null}">
         <p style="color: red">${requestScope.newsMsg}</p>
     </c:if>
@@ -174,35 +174,30 @@
         </div>
     </form>
 </div>
-<%--<div class="post">--%>
-<%--    <h2>根据id编辑用户</h2>--%>
-<%--    <form method="post" action="userMange">--%>
-<%--        <input class="message" placeholder="请输入编辑的用户id" name="userId" type="number" required>--%>
-<%--        <input class="message" placeholder="请输入更新后的用户名" name="username" type="text" required>--%>
-<%--        <input class="message" placeholder="请输入更新后的用户邮箱" name="email" type="text" required>--%>
-<%--        <input class="message" placeholder="请输入更新后的用户密码" name="password" type="text" required>--%>
-<%--        <input style="display: none" value="edit" name="type">--%>
-<%--        <div style="display: flex;flex-direction: row;justify-content: center">--%>
-<%--            <label style="line-height: 2.5">是否为管理员:</label>--%>
-<%--            <input placeholder="是否为管理员" style="height: 30px;width: 30px" name="isAdmin" type="checkbox">--%>
-<%--        </div>--%>
-<%--        <div style="display: flex;flex-direction: row;justify-content: center">--%>
-<%--            <button type="submit">提交</button>--%>
-<%--            <button onclick="closing()" type="reset">关闭</button>--%>
-<%--        </div>--%>
-<%--    </form>--%>
-<%--</div>--%>
-<%--<div class="post">--%>
-<%--    <h2>根据id删除用户</h2>--%>
-<%--    <form method="post" action="userMange">--%>
-<%--        <input class="message" placeholder="请输入删除的用户id" name="userId" type="number" required>--%>
-<%--        <input style="display: none" value="delete" name="type">--%>
-<%--        <div style="display: flex;flex-direction: row;justify-content: center">--%>
-<%--            <button type="submit">提交</button>--%>
-<%--            <button onclick="closing()" type="reset">关闭</button>--%>
-<%--        </div>--%>
-<%--    </form>--%>
-<%--</div>--%>
+<div class="post">
+    <h2>根据id编辑新闻</h2>
+    <form method="post" action="newsMange">
+        <input class="title" placeholder="请输入编辑的新闻id" name="newsId" type="number" required>
+        <input class="title" placeholder="请输入更新后的新闻标题" name="title" type="text" required>
+        <input class="message" placeholder="请输入更新后的新闻内容" name="content" type="text" required>
+        <input style="display: none" value="edit" name="type">
+        <div style="display: flex;flex-direction: row;justify-content: center">
+            <button type="submit">提交</button>
+            <button onclick="closing()" type="reset">关闭</button>
+        </div>
+    </form>
+</div>
+<div class="post">
+    <h2>根据id删除新闻</h2>
+    <form method="post" action="newsMange">
+        <input class="title" placeholder="请输入删除的新闻id" name="newsId" type="number" required>
+        <input style="display: none" value="delete" name="type">
+        <div style="display: flex;flex-direction: row;justify-content: center">
+            <button type="submit">提交</button>
+            <button onclick="closing()" type="reset">关闭</button>
+        </div>
+    </form>
+</div>
 </body>
 <script>
     const postelement = document.getElementsByClassName("post");
@@ -213,14 +208,14 @@
     function add() {
         postelement[0].setAttribute("style", 'display:flex');
     }
-    // // 编辑新闻
-    // function edit() {
-    //     postelement[1].setAttribute("style", 'display:flex');
-    // }
-    // // 删除新闻
-    // function del(){
-    //     postelement[2].setAttribute("style", 'display:flex');
-    // }
+    // 编辑新闻
+    function edit() {
+        postelement[1].setAttribute("style", 'display:flex');
+    }
+    // 删除新闻
+    function del(){
+        postelement[2].setAttribute("style", 'display:flex');
+    }
     // 关闭页面
     function closing() {
         for (let i = 0; i < postelement.length; i++) {

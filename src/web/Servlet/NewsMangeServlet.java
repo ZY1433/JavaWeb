@@ -39,6 +39,36 @@ public class NewsMangeServlet extends HttpServlet {
                 }
                 req.getRequestDispatcher("newsMangePage").forward(req,resp);
             }
+        } else if (type.equals("edit")) {
+            this.newsId = Integer.parseInt(req.getParameter("newsId"));
+            this.title = req.getParameter("title");
+            this.content = req.getParameter("content");
+
+            if (!validate()){
+                req.setAttribute("newsMsg",newsMsg);
+                req.getRequestDispatcher("newsMangePage").forward(req,resp);
+            } else {
+                NewsService newsService = new NewsService();
+                boolean flag = newsService.newsUpdate(this.newsId,this.title,this.content);
+                if (flag) {
+                    req.setAttribute("newsMsg","更新成功！");
+                } else {
+                    req.setAttribute("newsMsg",newsService.getMsg());
+                }
+                req.getRequestDispatcher("newsMangePage").forward(req,resp);
+            }
+        } else if (type.equals("delete")) {
+            this.newsId = Integer.parseInt(req.getParameter("newsId"));
+            NewsService newsService = new NewsService();
+            boolean flag = newsService.newsDelete(this.newsId);
+            if (flag) {
+                req.setAttribute("newsMsg","删除成功！");
+            } else {
+                req.setAttribute("newsMsg",newsService.getMsg());
+            }
+            req.getRequestDispatcher("newsMangePage").forward(req,resp);
+
+
         }
     }
     private boolean validate() {

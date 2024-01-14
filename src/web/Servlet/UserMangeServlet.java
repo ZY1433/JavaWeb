@@ -67,8 +67,6 @@ public class UserMangeServlet extends HttpServlet {
 
         } else if (type.equals("delete")) {
             this.userId = req.getParameter("userId");
-
-
                 UserService userService = new UserService();
                 boolean flag = userService.adminDelete(this.userId);
                 if (flag) {

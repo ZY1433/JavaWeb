@@ -22,6 +22,16 @@ public class News {
         this.content = content;
     }
 
+    public News(int newsId, String title, String content) {
+        this.newsId = newsId;
+        this.title = title;
+        this.content = content;
+    }
+
+    public News(int newsId) {
+        this.newsId = newsId;
+    }
+
     public int getNewsId() {
         return newsId;
     }
