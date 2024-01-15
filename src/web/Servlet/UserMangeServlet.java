@@ -28,6 +28,8 @@ public class UserMangeServlet extends HttpServlet {
             String admin = req.getParameter("isAdmin");
             if(admin != null) {
                 this.isAdmin = true;
+            } else {
+                this.isAdmin = false;
             }
             if (!validate()){
                 req.setAttribute("adminMsg",adminMsg);
@@ -51,6 +53,8 @@ public class UserMangeServlet extends HttpServlet {
             String admin = req.getParameter("isAdmin");
             if(admin != null) {
                 this.isAdmin = true;
+            } else {
+                this.isAdmin = false;
             } if (!validate()){
                 req.setAttribute("adminMsg",adminMsg);
                 req.getRequestDispatcher("userMangePage").forward(req,resp);

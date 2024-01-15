@@ -18,7 +18,6 @@ public class UserMangePageFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpSession session = request.getSession();
         Object loginAdmin = session.getAttribute("loginAdmin");
-        System.out.println(111);
         if (loginAdmin != null) {
             filterChain.doFilter(request,response);
         } else {
